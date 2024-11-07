@@ -1,4 +1,5 @@
 ONCE THE IAC SCRIPT IS FULLY EXECUTED: 
+(when deploying name the deplyment exp3-deployment)
 
 Kong Instance: 
 su - 
