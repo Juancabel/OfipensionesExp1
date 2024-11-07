@@ -9,9 +9,9 @@ sudo docker run -d --name kong --network=kong-net -v"$(pwd):/kong/declarative/" 
 docker ps (to check its running; port 8000)
 
 All other instances: 
-cd labs
-cd OfipensionesExp1
+cd /labs/OfipensionesExp1/
 sudo nano ofipensiones/settings.py (change db info)
+sudo chown -R camix369 /labs/
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver 0.0.0.0:8080
