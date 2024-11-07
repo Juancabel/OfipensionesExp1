@@ -99,6 +99,8 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt install python3-pip -y
+          sudo mkdir /labs
+          cd /labs
           sudo apt-get install ca-certificates curl gnupg lsb-release -y
           sudo mkdir -m 0755 -p /etc/apt/keyrings
           curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudogpg --dearmor -o /etc/apt/keyrings/docker.gpg
@@ -140,6 +142,8 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt install python3-pip -y
+          sudo mkdir /labs
+          cd /labs
           sudo git clone https://github.com/Juancabel/OfipensionesExp1.git
           cd OfipensionesExp1
           sudo git checkout Exp3
@@ -174,6 +178,8 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt install python3-pip -y
+          sudo mkdir /labs
+          cd /labs
           sudo git clone https://github.com/Juancabel/OfipensionesExp1.git
           cd OfipensionesExp1
           sudo git checkout Exp3
@@ -208,6 +214,8 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt install python3-pip -y
+          sudo mkdir /labs
+          cd /labs
           sudo git clone https://github.com/Juancabel/OfipensionesExp1.git
           cd OfipensionesExp1
           sudo git checkout Exp3
@@ -241,6 +249,8 @@ resources:
           #!/bin/bash
           sudo apt-get update
           sudo apt install python3-pip -y
+          sudo mkdir /labs
+          cd /labs
           sudo git clone https://github.com/Juancabel/OfipensionesExp1.git
           cd OfipensionesExp1
           sudo git checkout Exp3
