@@ -42,13 +42,10 @@ plugins:
       policy: local
       limit_by: ip
 
-plugins:
   - name: rate-limiting
     service: cronograma_service
     config:
       minute: 5
       policy: local
       limit_by: ip
-
-
 

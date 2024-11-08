@@ -6,6 +6,7 @@ cd /labs
 sudo nano kong.yml (fill the yml file with the one on this repository; changes IP's)
 sudo docker network create kong-net
 sudo docker run -d --name kong --network=kong-net \
+  -v /path/to/kong.yml:/kong/config/kong.yml \
   -v "$(pwd):/kong/declarative/" \
   -e "KONG_DATABASE=off" \
   -e "KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yml" \
