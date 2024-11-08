@@ -79,9 +79,9 @@ WSGI_APPLICATION = 'ofipensiones.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sprint2-exps',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'sprint2-exps',
+        'PASSWORD': 'password',
         'HOST': '35.192.28.42',
         'PORT': '',
     }

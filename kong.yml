@@ -26,26 +26,28 @@ services:
 upstreams:
   - name: facturas_upstream
     targets:
-      - target: <ip-balanceador-facturas>:8080
+      - target: <ip-balanceador-facturas>:80
         weight: 100
 
   - name: cronograma_upstream
     targets:
-      - target: <ip-balanceador-cronograma>:8080
+      - target: <ip-balanceador-cronograma>:80
         weight: 100
 
 plugins:
   - name: rate-limiting
     service: facturas_service
     config:
-      minute: 5
-      policy: local
-      limit_by: ip
+      minute: 100      
+      policy: local           
+      limit_by: ip            
+      show_rate_limit_headers: true  
 
   - name: rate-limiting
     service: cronograma_service
     config:
-      minute: 5
-      policy: local
-      limit_by: ip
+      minute: 100          
+      policy: local           
+      limit_by: ip            
+      show_rate_limit_headers: true
 
