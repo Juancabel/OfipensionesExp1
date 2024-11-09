@@ -9,7 +9,7 @@ services:
       - name: facturas
         paths:
           - /facturas
-          - /facturascreate/
+          - /facturacreate/
         strip_path: false
 
   - host: cronograma_upstream
@@ -20,7 +20,7 @@ services:
       - name: alarms
         paths:
           - /cronogramas
-          - /cronogramascreate/
+          - /cronogramacreate/
         strip_path: false
     
 upstreams:
@@ -41,7 +41,6 @@ plugins:
       minute: 100      
       policy: local           
       limit_by: ip            
-      show_rate_limit_headers: true  
 
   - name: rate-limiting
     service: cronograma_service
@@ -49,5 +48,4 @@ plugins:
       minute: 100          
       policy: local           
       limit_by: ip            
-      show_rate_limit_headers: true
 
