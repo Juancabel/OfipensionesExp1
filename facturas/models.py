@@ -1,13 +1,10 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
-
+import pgcrypto
 class Factura(models.Model):
-    nombre = models.CharField(max_length=100)
-    monto = models.FloatField(default =None,null=True,blank=True)
-    metodo = models.CharField(max_length=100)
-    documento_identidad = models.CharField(max_length=10)
+    nombre = pgcrypto.EncryptedTextField(cipher='AES', key='factura')
+    monto = pgcrypto.EncryptedIntegerField(cipher='AES', key='factura')
+    metodo = pgcrypto.EncryptedTextField(cipher='AES', key='factura')
+    documento_identidad = pgcrypto.EncryptedTextField(cipher='AES', key='factura')
 
 
     def __str__(self):
