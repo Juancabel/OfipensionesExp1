@@ -31,3 +31,9 @@ python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver 0.0.0.0:8080
 
+CONNECT TO SQL DB GCP: 
+gcloud sql connect myinstance --user=postgres
+CREATE EXTENSION IF NOT EXISTS pgcrypto
+\dx (to check it was created)
+\dt (list all databases)
+SELECT * FROM public.facturas_factura; (toca especificar el schema)
