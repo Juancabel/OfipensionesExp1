@@ -6,7 +6,7 @@ from pgcrypto import fields
 
 class Cronograma(models.Model):
     num_cuentas = fields.IntegerPGPSymmetricKeyField(default =None,null=True,blank=True, verbose_name='num_cuentas')
-    monto = fields.FloatPGPSymmetricKeyField(default =None,null=True,blank=True, verbose_name='monto')
+    monto_total = fields.FloatPGPSymmetricKeyField(default =None,null=True,blank=True, verbose_name='monto_total')
     periodo_total = fields.IntegerPGPSymmetricKeyField(default =None,null=True,blank=True, verbose_name='periodo_total')
 
     def __str__(self):
