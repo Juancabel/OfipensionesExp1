@@ -1,10 +1,11 @@
 from django.db import models
-import pgcrypto
+from pgcrypto import fields
+
 class Factura(models.Model):
-    nombre = pgcrypto.EncryptedTextField(cipher='AES', key='factura')
-    monto = pgcrypto.EncryptedIntegerField(cipher='AES', key='factura')
-    metodo = pgcrypto.EncryptedTextField(cipher='AES', key='factura')
-    documento_identidad = pgcrypto.EncryptedTextField(cipher='AES', key='factura')
+    nombre = fields.TextPGPSymmetricKeyField(max_length=50, verbose_name='nombre')
+    monto = fields.FloatPGPSymmetricKeyField(default =None,null=True,blank=True, verbose_name='monto')
+    metodo = fields.TextPGPSymmetricKeyField(max_length=20, verbose_name='metodo')
+    documento_identidad = fields.TextPGPSymmetricKeyField(max_length=10, verbose_name='documento_identidad')
 
 
     def __str__(self):

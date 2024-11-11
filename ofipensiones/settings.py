@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-__9dg2u(33h*7007o*1x)zq6+0soh-jf7&kss19om6muj&=^9z'
-
+PGCRYPTO_KEY = 'clavesecretaofipensiones'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'estudiantes',
     'cronograma',
-    'facturas'
+    'facturas',
+    'pgcrypto'
 ]
 
 MIDDLEWARE = [
