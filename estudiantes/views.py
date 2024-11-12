@@ -34,13 +34,10 @@ def estudiante_list_al_dia(request):
     context = {
         'estudiante_list_al_dia': serializer.data
     }
-    return render(request, 'estudiantes/estudiantes.html', context)
+    return render(request, 'estudiantes/estudiantesSinBoton.html', context)
 
-@login_required
+
 def crear_estudiante(request):
-    role = getRole(request)
-    if role != "Administrador":
-        return HttpResponse("Unauthorized User")
     if request.method == 'POST':
         data = json.loads(request.body)
         form = EstudianteForm(data)
@@ -68,6 +65,6 @@ def estudiante_padre(request):
     context = {
         'estudiante_list_al_dia': serializer.data
     }
-    return render(request, 'estudiantes/estudiantes.html', context)
+    return render(request, 'estudiantes/estudiantesSinBoton.html', context)
 
     

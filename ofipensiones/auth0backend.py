@@ -27,20 +27,20 @@ def getRole(request):
     user = request.user
     auth0user = user.social_auth.filter(provider="auth0")[0]
     accessToken = auth0user.extra_data['access_token']
-    url = "https://dominio_auth0_tenant.auth0.com/userinfo"
+    url = "https://dev-q7i27cyhme62vzcv.us.auth0.com/userinfo"
     headers = {'authorization': 'Bearer ' + accessToken}
     resp = requests.get(url, headers=headers)
     userinfo = resp.json()
-    role = userinfo['dominio_auth0_tenant.auth0.com/role']
+    role = userinfo['dev-q7i27cyhme62vzcv.us.auth0.com/role']
     return (role)
 
 def getKids(request):
     user = request.user
     auth0user = user.social_auth.filter(provider="auth0")[0]
     accessToken = auth0user.extra_data['access_token']
-    url = "https://dominio_auth0_tenant.auth0.com/userinfo"
+    url = "https://dev-q7i27cyhme62vzcv.us.auth0.com/userinfo"
     headers = {'authorization': 'Bearer ' + accessToken}
     resp = requests.get(url, headers=headers)
     userinfo = resp.json()
-    kids = userinfo['dominio_auth0_tenant.auth0.com/kids']
+    kids = userinfo['dev-q7i27cyhme62vzcv.us.auth0.com/kids']
     return (kids)

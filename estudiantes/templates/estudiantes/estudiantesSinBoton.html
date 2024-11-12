@@ -4,14 +4,7 @@
 <div class="content">
     <div class="">
         <div class="page-header-title">
-            <h4 class="page-title">Facturas</h4>
-
-            <div style="text-align:right;">
-                <button type="button" class="btn btn-success waves-effect waves-light"
-                        onClick=" window.location.href='/facturacreate' " style="text-align:center;">+
-                </button>
-            </div>
-
+            <h4 class="page-title">Estudiantes</h4>
         </div>
     </div>
 
@@ -28,21 +21,22 @@
                         <tr style="color:#0E2EB0">
                             <th font color="red">ID</th>
                             <th>Nombre</th>
-                            <th>Documento Identidad</th>
-                            <th>Monto Pagado</th>
-                            <th>Metodo</th>
+                            <th># Documento Identidad</th>
+                            <th>Cronograma Numero de Cuentas</th>
+                            <th>Cronograma Monto total</th>
+                            <th>Cronograma Periodo total</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for factura in factura_list %}
+                        {% for estudiante in estudiante_list %}
                         <tr>
-                            <td>{{ factura.id }}</td>
-                            <td>{{ factura.nombre }}</td>
-                            <td>{{ factura.documento_identidad }}</td>
-                            <td>{{ factura.monto }}</td>
-                            <td>{{ factura.metodo }}</td>
-
+                            <td>{{ estudiante.id }}</td>
+                            <td>{{ estudiante.nombre }}</td>
+                            <td>{{ estudiante.documento_identidad }}</td>
+                            <td>{{ estudiante.cronograma.num_cuentas }}</td>
+                            <td>{{ estudiante.cronograma.monto_total }}</td>
+                            <td>{{ estudiante.cronograma.periodo_total }}</td>
                         </tr>
                         {% endfor %}
 

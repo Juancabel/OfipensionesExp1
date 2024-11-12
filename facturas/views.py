@@ -24,11 +24,8 @@ def facturas_list(request):
     }
     return render(request, 'facturas/facturas.html', context)
 
-@login_required
+
 def crear_factura(request):
-    role = getRole(request)
-    if role != "Administrador":
-        return HttpResponse("Unauthorized User")
     if request.method == 'POST':
         data = json.loads(request.body)
         form = FacturaForm(data)
@@ -43,6 +40,6 @@ def crear_factura(request):
     context = {
         'form': form,
     }
-    return render(request, 'facturas/facturas.html', context)
+    return render(request, 'facturas/facturaCreate.html', context)
 
     

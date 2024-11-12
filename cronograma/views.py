@@ -24,11 +24,7 @@ def cronograma_list(request):
     }
     return render(request, 'cronograma/cronogramas.html', context)
 
-@login_required
 def crear_cronograma(request):
-    role = getRole(request)
-    if role != "Administrador":
-        return HttpResponse("Unauthorized User")
     if request.method == 'POST':
         data = json.loads(request.body)
         form = CronogramaForm(data)
@@ -43,6 +39,6 @@ def crear_cronograma(request):
     context = {
         'form': form,
     }
-    return render(request, 'cronograma/cronogramas.html', context)
+    return render(request, 'cronograma/cronogramaCreate.html', context)
 
     
