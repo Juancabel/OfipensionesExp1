@@ -39,8 +39,7 @@ def estudiante_list_al_dia(request):
 
 def crear_estudiante(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        form = EstudianteForm(data)
+        form = EstudianteForm(request.POST)
         if form.is_valid():
             create_estudiante(form)
             messages.add_message(request, messages.SUCCESS, 'Estudiante creado exitosamente')

@@ -26,8 +26,7 @@ def cronograma_list(request):
 
 def crear_cronograma(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        form = CronogramaForm(data)
+        form = CronogramaForm(request.POST)
         if form.is_valid():
             create_cronograma(form)
             messages.add_message(request, messages.SUCCESS, 'Cronograma creado exitosamente')

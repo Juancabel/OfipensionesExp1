@@ -27,8 +27,7 @@ def facturas_list(request):
 
 def crear_factura(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        form = FacturaForm(data)
+        form = FacturaForm(request.POST)
         if form.is_valid():
             create_factura(form)
             messages.add_message(request, messages.SUCCESS, 'Factura creada exitosamente')
@@ -40,6 +39,5 @@ def crear_factura(request):
     context = {
         'form': form,
     }
-    return render(request, 'facturas/facturaCreate.html', context)
 
     
