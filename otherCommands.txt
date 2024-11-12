@@ -25,7 +25,7 @@ docker ps (to check its running; port 8000)
 
 All other instances: 
 cd /labs/OfipensionesExp1/
-sudo nano ofipensiones/settings.py (change db info)
+sudo nano ofipensiones/settings.py (change db info AND change public ip for auth0)
 sudo chown -R camix369 /labs/
 python3 manage.py makemigrations
 python3 manage.py migrate
@@ -37,3 +37,14 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto
 \dx (to check it was created)
 \dt (list all databases)
 SELECT * FROM public.facturas_factura; (toca especificar el schema)
+
+
+AUTH0 CONFIG: 
+Settings -> Advanced -> Allowed logout Urls -> http://ip_publica_instancia:8080 (para todas las instancias que esten corriendo)
+Aplications -> ofipensiones -> Allowed Callback URLs ->  http://ip_publica_instancia:8080/complete/auth0 (para todas las instancias que esten corriendo)
+Aplications -> ofipensiones -> Allowed Logout URLs -> http://ip_publica_instancia:8080 (para todas las instancias que esten corriendo)
+
+USUARIOS AUTH0
+ofiusuario1@gmail.com -> ofiusuario1* -> role: Administrador kids: []
+ofiusuario2@gmail.com -> ofiusuario2* -> role: Padre kids: [1]
+ofiusuario3@gmail.com -> ofiusuario3* -> role: Padre kids: [2,3]

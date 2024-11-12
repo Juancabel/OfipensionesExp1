@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'estudiantes',
     'cronograma',
     'facturas',
-    'pgcrypto'
+    'pgcrypto',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -129,3 +130,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL ="https://dev-q7i27cyhme62vzcv.us.auth0.com/v2/logout?returnTo=http%3A%2F%2Fip_publica_instancia:8080"
+SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dominio_auth0_tenant.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '7qu1D6q8MsC52yQryJStuE3KSRwx3SzT'
+SOCIAL_AUTH_AUTH0_SECRET = 'dpGMZKtXHUk-covI_w-SBFueZkSkQWNJm07zl9zN25UjVVomnRTuhXsfIjJnU9Tw'
+SOCIAL_AUTH_AUTH0_SCOPE = ['openid','profile','email','role',]
+AUTHENTICATION_BACKENDS = {'monitoring.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend',}
