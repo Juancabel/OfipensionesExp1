@@ -5,3 +5,6 @@ def index(request):
 
 def healthCheck(request):
     return HttpResponse('ok')
+
+def index(request):
+    return render(request, 'index.html')
