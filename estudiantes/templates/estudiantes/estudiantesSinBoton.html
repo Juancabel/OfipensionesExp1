@@ -22,9 +22,6 @@
                             <th font color="red">ID</th>
                             <th>Nombre</th>
                             <th># Documento Identidad</th>
-                            <th>Cronograma Numero de Cuentas</th>
-                            <th>Cronograma Monto total</th>
-                            <th>Cronograma Periodo total</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -33,10 +30,6 @@
                         <tr>
                             <td>{{ estudiante.id }}</td>
                             <td>{{ estudiante.nombre }}</td>
-                            <td>{{ estudiante.documento_identidad }}</td>
-                            <td>{{ estudiante.cronograma.num_cuentas }}</td>
-                            <td>{{ estudiante.cronograma.monto_total }}</td>
-                            <td>{{ estudiante.cronograma.periodo_total }}</td>
                         </tr>
                         {% endfor %}
 

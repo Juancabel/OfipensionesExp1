@@ -32,7 +32,7 @@ def estudiante_list_al_dia(request):
     estudiantes = get_estudiantes_aldia()
     serializer = EstudianteSerializer(estudiantes,many=True)
     context = {
-        'estudiante_list_al_dia': serializer.data
+        'estudiante_list': serializer.data
     }
     return render(request, 'estudiantes/estudiantesSinBoton.html', context)
 
@@ -62,7 +62,7 @@ def estudiante_padre(request):
     estudiantes = get_estudiantes_padre(kids)
     serializer = EstudianteSerializer(estudiantes,many=True)
     context = {
-        'estudiante_list_al_dia': serializer.data
+        'estudiante_list': serializer.data
     }
     return render(request, 'estudiantes/estudiantesSinBoton.html', context)
 
