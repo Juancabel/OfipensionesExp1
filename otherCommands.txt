@@ -48,3 +48,5 @@ USUARIOS AUTH0
 ofiusuario1@gmail.com -> ofiusuario1* -> role: Administrador kids: []
 ofiusuario2@gmail.com -> ofiusuario2* -> role: Padre kids: [1]
 ofiusuario3@gmail.com -> ofiusuario3* -> role: Padre kids: [2,3]
+
+(estudiante con cronograma is not working)
