@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-__9dg2u(33h*7007o*1x)zq6+0soh-jf7&kss19om6muj&=^9z'
-
+PGCRYPTO_KEY = 'clavesecretaofipensiones'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'estudiantes',
     'cronograma',
-    'facturas'
+    'facturas',
+    'pgcrypto',
+    'social_django'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +59,7 @@ ROOT_URLCONF = 'ofipensiones.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'ofipensiones', 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,9 +81,9 @@ WSGI_APPLICATION = 'ofipensiones.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sprint2-exps',
+        'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': 'sprint2-exps',
+        'PASSWORD': 'password',
         'HOST': '35.192.28.42',
         'PORT': '',
     }
@@ -128,3 +130,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = "/login/auth0"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL ="https://dev-q7i27cyhme62vzcv.us.auth0.com/v2/logout?returnTo=http%3A%2F%2Fip_publica_instancia:8080"
+SOCIAL_AUTH_TRAILING_SLASH = False 
+SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-q7i27cyhme62vzcv.us.auth0.com'
+SOCIAL_AUTH_AUTH0_KEY = '7qu1D6q8MsC52yQryJStuE3KSRwx3SzT'
+SOCIAL_AUTH_AUTH0_SECRET = 'dpGMZKtXHUk-covI_w-SBFueZkSkQWNJm07zl9zN25UjVVomnRTuhXsfIjJnU9Tw'
+SOCIAL_AUTH_AUTH0_SCOPE = ['openid','profile','email','role','kids']
+AUTHENTICATION_BACKENDS = ['ofipensiones.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend']

@@ -1,13 +1,11 @@
 from django.db import models
-
-# Create your models here.
-from django.db import models
+from pgcrypto import fields
 
 class Factura(models.Model):
-    nombre = models.CharField(max_length=100)
-    monto = models.FloatField(default =None,null=True,blank=True)
-    metodo = models.CharField(max_length=100)
-    documento_identidad = models.CharField(max_length=10)
+    nombre = fields.TextPGPSymmetricKeyField(max_length=50, verbose_name='nombre')
+    monto = fields.FloatPGPSymmetricKeyField(default =None,null=True,blank=True, verbose_name='monto')
+    metodo = fields.TextPGPSymmetricKeyField(max_length=20, verbose_name='metodo')
+    documento_identidad = fields.TextPGPSymmetricKeyField(max_length=10, verbose_name='documento_identidad')
 
 
     def __str__(self):

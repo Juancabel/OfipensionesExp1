@@ -8,27 +8,36 @@ from .logic.facturas_logic import get_facturas, create_factura
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .serializers import FacturaSerializer
+from django.contrib.auth.decorators import login_required
+from ofipensiones.auth0backend import getRole
 import json
 
+@login_required
 def facturas_list(request):
+    role = getRole(request)
+    if role != "Administrador":
+        return HttpResponse("Unauthorized User")
     facturas = get_facturas()
     serializer = FacturaSerializer(facturas,many=True)
     context = {
         'factura_list': serializer.data
     }
-    return JsonResponse(context)
+    return render(request, 'facturas/facturas.html', context)
+
 
 def crear_factura(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        form = FacturaForm(data)
+        form = FacturaForm(request.POST)
         if form.is_valid():
             create_factura(form)
-            return JsonResponse({"mensaje": "Factura creada exitosamente"}, status=201)
+            messages.add_message(request, messages.SUCCESS, 'Factura creada exitosamente')
+            return HttpResponseRedirect(reverse('facturaCreate'))
         else:
             print(form.errors)
-            return JsonResponse({"mensaje": "No se pudo crear la factura"}, status=500)
     else:
-        return JsonResponse({"mensaje": "No se pudo crear la factura"}, status=500)
-    
+        form = FacturaForm()
+    context = {
+        'form': form,
+    }
+
     

@@ -9,26 +9,35 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from .serializers import CronogramaSerializer
 import json
+from django.contrib.auth.decorators import login_required
+from ofipensiones.auth0backend import getRole
 
+@login_required
 def cronograma_list(request):
+    role = getRole(request)
+    if role != "Administrador":
+        return HttpResponse("Unauthorized User")
     cronogramas = get_cronogramas()
     serializer = CronogramaSerializer(cronogramas,many=True)
     context = {
         'cronograma_list': serializer.data
     }
-    return JsonResponse(context)
+    return render(request, 'cronograma/cronogramas.html', context)
 
 def crear_cronograma(request):
     if request.method == 'POST':
-        data = json.loads(request.body)
-        form = CronogramaForm(data)
+        form = CronogramaForm(request.POST)
         if form.is_valid():
             create_cronograma(form)
-            return JsonResponse({"mensaje": "Cronograma creado exitosamente"}, status=201)
+            messages.add_message(request, messages.SUCCESS, 'Cronograma creado exitosamente')
+            return HttpResponseRedirect(reverse('cronogramaCreate'))
         else:
             print(form.errors)
-            return JsonResponse({"mensaje": "No se pudo crear el cronograma"}, status=500)
     else:
-        return JsonResponse({"mensaje": "No se pudo crear el cronograma"}, status=500)
-    
+        form = CronogramaForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'cronograma/cronogramaCreate.html', context)
+
     

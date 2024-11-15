@@ -12,3 +12,7 @@ def create_estudiante(form):
     estudiante = form.save()
     estudiante.save()
     return ()
+
+def get_estudiantes_padre(lista_ids):
+    queryset = Estudiante.objects.filter(id__in=lista_ids) 
+    return queryset
