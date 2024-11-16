@@ -11,6 +11,7 @@ services:
           - /facturas
           - /facturacreate/
         strip_path: false
+        preserve_host: true
 
   - host: cronograma_upstream
     name: cronograma_service
@@ -26,6 +27,7 @@ services:
           - /estudiantes/padre/
           - /estudiantescreate/
         strip_path: false
+        preserve_host: true
 
   - host: login_upstream
     name: login_service
@@ -39,6 +41,7 @@ services:
           - /logout
           - /complete/auth0
         strip_path: false
+        preserve_host: true
 
 upstreams:
   - name: facturas_upstream
