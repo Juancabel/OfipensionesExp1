@@ -133,6 +133,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = "/login/auth0"
 LOGIN_REDIRECT_URL = "/"
+STATIC_URL = '/static/'
 LOGOUT_REDIRECT_URL ="https://dev-q7i27cyhme62vzcv.us.auth0.com/v2/logout?returnTo=http%3A%2F%2Fip_publica_instancia:8080"
 SOCIAL_AUTH_TRAILING_SLASH = False 
 SOCIAL_AUTH_AUTH0_DOMAIN = 'dev-q7i27cyhme62vzcv.us.auth0.com'
