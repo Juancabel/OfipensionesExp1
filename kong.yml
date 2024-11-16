@@ -37,6 +37,7 @@ services:
           - /
           - /login/auth0
           - /logout
+          - /complete/auth0
         strip_path: false
 
 upstreams:
