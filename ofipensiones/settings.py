@@ -124,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -141,3 +141,11 @@ SOCIAL_AUTH_AUTH0_KEY = '7qu1D6q8MsC52yQryJStuE3KSRwx3SzT'
 SOCIAL_AUTH_AUTH0_SECRET = 'dpGMZKtXHUk-covI_w-SBFueZkSkQWNJm07zl9zN25UjVVomnRTuhXsfIjJnU9Tw'
 SOCIAL_AUTH_AUTH0_SCOPE = ['openid','profile','email','role','kids']
 AUTHENTICATION_BACKENDS = ['ofipensiones.auth0backend.Auth0','django.contrib.auth.backends.ModelBackend']
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static', 'media')
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
