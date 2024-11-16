@@ -39,5 +39,6 @@ def crear_factura(request):
     context = {
         'form': form,
     }
+    return render(request, 'facturas/facturaCreate.html', context)
 
     
